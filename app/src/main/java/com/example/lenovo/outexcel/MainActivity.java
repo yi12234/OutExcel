@@ -2,11 +2,13 @@ package com.example.lenovo.outexcel;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.myexcel.BaseExcel;
+import com.example.myexcel.TxtUtils;
 
 import java.util.ArrayList;
 
@@ -46,24 +48,28 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 break;
         }
     }
-    public void initData(){
-        BaseExcel.BaseExcel(title,getSDPath()+"/OutExcel",
-                getSDPath()+"/OutExcel/excel.xls","excel",getRecordData(),this);
-    }
 
-
-    /**
-     * 将数据集合 转化成ArrayList<ArrayList<String>>
-     * @return
-     */
-    private  ArrayList<ArrayList<String>> getRecordData() {
-        ArrayList<ArrayList<String>>  recordList = new ArrayList<>();
-        for (int i = 0; i <10; i++) {
-            ArrayList<String> beanList = new ArrayList<String>();
-            beanList.add(ed_name.getText().toString());
-            beanList.add("123123");
-            recordList.add(beanList);
-        }
-        return recordList;
+    private void initData() {
+        TxtUtils.saveFile(ed_name.getText().toString().trim());
     }
+//    public void initData(){
+//        BaseExcel.BaseExcel(title,getSDPath()+"/OutExcel",
+//                getSDPath()+"/OutExcel/excel.xls","excel",getRecordData(),this);
+//    }
+
+//
+//    /**
+//     * 将数据集合 转化成ArrayList<ArrayList<String>>
+//     * @return
+//     */
+//    private  ArrayList<ArrayList<String>> getRecordData() {
+//        ArrayList<ArrayList<String>>  recordList = new ArrayList<>();
+//        for (int i = 0; i <10; i++) {
+//            ArrayList<String> beanList = new ArrayList<String>();
+//            beanList.add(ed_name.getText().toString());
+//            beanList.add("123123");
+//            recordList.add(beanList);
+//        }
+//        return recordList;
+//    }
 }
